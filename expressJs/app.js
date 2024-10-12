@@ -11,13 +11,12 @@ const app = express()
 
 app.use((request,response,next)=>{
     console.log("1st middleware");
+    response.send('<h1>Welcome to this learning project</h1>')
     next(); // * go to next middleware ["2nd middleware"]
 });
 
 app.use((request,response,next)=>{
-
         console.log("2nd middleware");
-        
     });
 
 // * create server
