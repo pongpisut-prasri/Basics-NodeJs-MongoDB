@@ -7,16 +7,11 @@ exports.getAllSpace = (req, res, next) => {
 
 exports.addSpace = (req, res) => {
   try {
-    console.log("req ",req.body);
-    
-    const model =new Home(req?.body?.spaceName);
-    model.save()
-    res.status(200).json({
-      message: "success",
-    });
-  
+    const model =new Home();
+    model.copyProperties(req.body)
+    model.save(res)
   } catch (error) {
-    res.status(400).send(error.message)
+    res.status(400).send(error)
   }
 };
 
