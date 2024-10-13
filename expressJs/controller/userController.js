@@ -16,6 +16,5 @@ exports.addSpace = (req, res) => {
 };
 
 exports.getSpaceById = (req, res) => {
-  const allSpace = HomeModel.getAllSpace();
-  res.status(200).json(allSpace?.filter((o) => o?.id === req?.body?.id)?.[0] || {});
+  new Home().findDataById(res,req.body.id);
 };
