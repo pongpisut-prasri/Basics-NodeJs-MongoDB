@@ -1,25 +1,29 @@
+const express = require('express')
+
 const http = require('http')
 const mongoDb = require('mongoose')
-const express = require('express')
 require('dotenv').config()
 
+const homeRoute = require('./routes/home')
+
 const app = express() 
-const bodyParser = require('body-parser')
-const homeController = require('./routes/home')
-const gardenController = require('./routes/garden')
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
 
 mongoDb.connect(process.env.DB_CONNECTION)
 .then(()=>{
     console.log("Database connect Success");
 }).catch((e)=>{
-    console.log("cause by ",e);
+    console.log("can not connect database cause by ",e);
     
 })
 
-// * define first path
-app.use('/home',homeController)
-app.use('/garden',gardenController)
+app.use("/homeSpace",homeRoute)
+
+
 
 // * create server
 const server = http.createServer(app)
-server.listen(process.env.PORT)
+server.listen(3000,'0.0.0.0',()=>{
+    console.log("server ready");
+})

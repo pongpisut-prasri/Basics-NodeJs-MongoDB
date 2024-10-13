@@ -1,18 +1,11 @@
 const express = require('express')
 const router = express.Router()
+const userController = require('../controller/userController')
 
+router.get('/getAllSpace',userController.getAllSpace)
 
-router.get('/',(req,res,next)=>{
-    res.send('<h1>Welcome to my home</h1>')
-})
+router.post('/addSpace',userController.addSpace)
 
-router.get('/action',(req,res,next)=>{
-    res.send(
-        '<form action="/home/bedroom" method="POST"> <input type="text" name"action"><button type="submit"></button></input></form>'
-    )
-})
+router.get('/getSpaceById',userController.getSpaceById)
 
-router.post("/bedroom",(req,res,next)=>{
-    res.send(req.body)
-})
 module.exports = router;

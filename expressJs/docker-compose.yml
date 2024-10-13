@@ -1,0 +1,10 @@
+version: "3"
+services:
+  mongoImage:
+    image: "mongo"
+
+  nodejs:
+    build: .
+    ports:
+      - 3000:9880
+
