@@ -1,38 +1,14 @@
-MongoDB connection
+จากการหาข้อมูลจากหลายๆที่ทำให้สรุปได้ประมาณนี้
 
-const mongoConnection = callback =>{
-    MongoClient.connect('mongodb://localhost:27017/home').then(client=>{
-        console.log("Connected MongoDb");
-        _db=client.db()
-        callback(client)
-    }).catch(err=>{
-        console.log("error cause by ",err);
-        
-    })
-}
+โครงสร้างภาษามีความคล้าย java หลายอย่าง เลยเอาวิธีเขียนมาประยุกต์ใช้ได้
 
-home คือชื่อ database ที่สร้าง
+nodejs mvc ประกอบด้วย
 
-const getDb = require("../utils/database_connector").getDb;
+m = Models แมพข้อมูลเข้า/ดึงข้อมูล database และมีฟังก์ชันไว้เอื้ออำนวยความสะดวกบางอย่าง
 
-class Home{
-  constructor(spaceName) {
-    this.spaceName = spaceName;
-  }
+v = Views frontend
 
-  save() {
-    const db = getDb();
-    db.collection("homeSpace").insertOne(this).then((result)=>{
-        console.log("success ",result);
-    }).catch((error)=>{
-        console.log("error cause by ",error);
-    });
-  }
+c = Controller call function 
 
-
-
-};
-module.exports = Home
-
-getDb เป็น function ที่ใช้สำหรับการเอา database connection มาใช้ collection คือชื่อ table ที่ต้องการ insert ข้อมูล
+routes ทำหน้าที่ mapping url กับ controller
 

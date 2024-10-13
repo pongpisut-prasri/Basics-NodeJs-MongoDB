@@ -1,6 +1,7 @@
 const BaseEntity = require("./BaseEntity");
 const { ObjectId } = require("mongodb");
 const getDb = require("../utils/database_connector").getDb;
+
 class Home {
   constructor(spaceName, createDate, createBy, updateDate, updateBy) {
     this.spaceName = spaceName;
