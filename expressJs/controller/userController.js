@@ -1,3 +1,4 @@
+const Home = require("../collection/Home.js");
 const HomeModel = require("../models/homeModel.js");
 
 exports.getAllSpace = (req, res, next) => {
@@ -6,13 +7,16 @@ exports.getAllSpace = (req, res, next) => {
 
 exports.addSpace = (req, res) => {
   try {
-    const model = new HomeModel(req?.body?.spaceName, req?.body?.id);
-    model.save();
+    console.log("req ",req.body);
+    
+    const model =new Home(req?.body?.spaceName);
+    model.save()
     res.status(200).json({
       message: "success",
     });
+  
   } catch (error) {
-    res.status(400).send("error cause by ", error);
+    res.status(400).send(error.message)
   }
 };
 
