@@ -6,5 +6,7 @@ services:
   nodejs:
     build: .
     ports:
-      - 3000:9880
+      - 3000:3000
+    depends_on:
+      - mongoImage
 

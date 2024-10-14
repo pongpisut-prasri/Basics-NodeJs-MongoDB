@@ -4,7 +4,7 @@ const MongoClient = mongodb.MongoClient;
 let _db;
 
 const mongoConnection = callback =>{
-    MongoClient.connect('mongodb://localhost:27017/home').then(client=>{
+    MongoClient.connect('mongodb://mongoImage:27017/home').then(client=>{
         console.log("Connected MongoDb");
         _db=client.db()
         callback(client)
